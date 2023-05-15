@@ -7,6 +7,12 @@ public class Main {
         Shape circle = new Circle(7);
         
         Comparable[]shapes = {(Comparable) circle, (Comparable) rectangle3, (Comparable) rectangle, (Comparable) rectangle2};
+        Comparable[]shapes2 = {(Comparable) circle, (Comparable) rectangle2, (Comparable) rectangle2, (Comparable) rectangle};
+        Comparable[]shapes3 = {(Comparable) circle, (Comparable) rectangle3, (Comparable) rectangle, (Comparable) rectangle2};
+        Comparable[]shapes4 = {(Comparable) circle, (Comparable) rectangle, (Comparable) rectangle3, (Comparable) rectangle2};
+        
+        //comparing shapes by their area
+        System.out.println("Heap Sort Test");
         System.out.println("Shapes before sorting");
         printArray(shapes);
         HeapSort heapsort = new HeapSort();
@@ -22,6 +28,59 @@ public class Main {
         }
   
         testArray(shapes);
+        
+        
+        System.out.println("Merge Sort Test");
+        System.out.println("Shapes before sorting");
+        printArray(shapes2);
+        MergeSort m = new MergeSort();
+        m.mergeSort(shapes2);
+       
+        System.out.println("Shapes after sorting");
+        printArray(shapes2);
+        
+        System.out.println("Area Values of the Shape Array after sorting:");
+        for(Comparable shape: shapes2) {
+        	Shape temp = (Shape) shape;
+        	System.out.println(temp.getArea());
+        }
+  
+        testArray(shapes2);
+        
+        
+        System.out.println("Quick Sort Test");
+        System.out.println("Shapes before sorting");
+        printArray(shapes3);
+        QuickSort quickTest = new QuickSort();
+		quickTest.quickSort(shapes3);
+       
+        System.out.println("Shapes after sorting");
+        printArray(shapes3);
+        
+        System.out.println("Area Values of the Shape Array after sorting:");
+        for(Comparable shape: shapes3) {
+        	Shape temp = (Shape) shape;
+        	System.out.println(temp.getArea());
+        }
+  
+        testArray(shapes3);
+        
+        System.out.println("Shell Sort Test");
+        System.out.println("Shapes before sorting");
+        printArray(shapes4);
+        ShellSort shellTest = new ShellSort();
+		shellTest.sort(shapes4);
+       
+        System.out.println("Shapes after sorting");
+        printArray(shapes3);
+        
+        System.out.println("Area Values of the Shape Array after sorting:");
+        for(Comparable shape: shapes3) {
+        	Shape temp = (Shape) shape;
+        	System.out.println(temp.getArea());
+        }
+  
+        testArray(shapes3);
         
     }
     
@@ -72,6 +131,8 @@ class Rectangle implements Comparable, Shape {
      return "Rectangle with length " + length + " and width " + width;
  }
  
+ 
+ //Compares shapes with their areas
  public int compareTo(Object shape) {
  	
 		if(this.getArea() > ((Shape) shape).getArea()) {
